@@ -1,5 +1,3 @@
-export const SUPERUSER_EMAIL = 'sadikuolsi2001@gmail.com'
-
 export const DAY_NAMES = [
   'Sunday',
   'Monday',
