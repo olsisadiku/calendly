@@ -130,7 +130,6 @@ function ScheduleEditor({ match, studentTimezone }: { match: MatchWithTeacher; s
 
       for (let m = 0; m < 24 * 60; m += 30) {
         const start = minutesToTime(m)
-        const end = minutesToTime(m + duration)
         if (m + duration > 24 * 60) continue
 
         const isBusy = busySlots.some((b) => {

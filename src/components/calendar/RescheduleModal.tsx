@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import type { CalendarLesson } from '../../hooks/useCalendarData'
-import type { TeacherAvailability, RecurringSchedule } from '../../lib/database.types'
+import type { TeacherAvailability } from '../../lib/database.types'
 import type { LessonStatus } from '../../lib/constants'
 import { Modal } from '../ui/Modal'
 import { Button } from '../ui/Button'
@@ -24,7 +24,6 @@ interface RescheduleModalProps {
   onUpdateStatus: (lesson: CalendarLesson, status: LessonStatus) => Promise<void>
   availability: TeacherAvailability[]
   allLessons: CalendarLesson[]
-  schedules: RecurringSchedule[]
   isTeacher: boolean
   canModify: boolean
   viewerTimezone: string
@@ -99,7 +98,6 @@ export function RescheduleModal({
   onUpdateStatus,
   availability,
   allLessons,
-  schedules,
   isTeacher,
   canModify,
   viewerTimezone,

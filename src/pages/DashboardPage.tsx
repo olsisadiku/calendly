@@ -299,7 +299,6 @@ export function DashboardPage() {
         onUpdateStatus={handleUpdateStatus}
         availability={availability}
         allLessons={lessons}
-        schedules={schedules}
         isTeacher={isTeacher}
         canModify={selectedLesson ? canModifyLesson(selectedLesson) : false}
         viewerTimezone={viewerTimezone}
