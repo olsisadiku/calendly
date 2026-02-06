@@ -71,7 +71,7 @@ export function SchedulePage() {
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
       <div className="mb-8">
-        <h1 className="font-display text-3xl font-bold text-warm-900">{t('myScheduleTitle')}</h1>
+        <h1 className="font-display text-2xl sm:text-3xl font-bold text-warm-900">{t('myScheduleTitle')}</h1>
         <p className="mt-1 text-warm-500">{t('setupRecurringLessons')}</p>
       </div>
 
@@ -232,7 +232,7 @@ function ScheduleEditor({ match, studentTimezone }: { match: MatchWithTeacher; s
             {displaySchedules.map((schedule, i) => (
               <div
                 key={schedule.id}
-                className="flex items-center justify-between px-6 py-4 animate-slide-up"
+                className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 animate-slide-up"
                 style={{ animationDelay: `${i * 50}ms` }}
               >
                 <div className="flex items-center gap-3">
@@ -312,7 +312,7 @@ function ScheduleEditor({ match, studentTimezone }: { match: MatchWithTeacher; s
               {availableSlots.length === 0 ? (
                 <p className="text-sm text-warm-400">{t('noAvailableSlots')}</p>
               ) : (
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                   {availableSlots.map((slot) => (
                     <button
                       key={`${slot.teacherDay}-${slot.teacherStart}`}

@@ -15,7 +15,12 @@ const navItems = {
   ],
 }
 
-export function Sidebar() {
+interface SidebarProps {
+  open: boolean
+  onClose: () => void
+}
+
+export function Sidebar({ open, onClose }: SidebarProps) {
   const { profile, isSuperuser, isStudent, isTeacher } = useProfile()
   const { t } = useLanguage()
 
@@ -23,10 +28,28 @@ export function Sidebar() {
   const items = role ? navItems[role] : []
 
   return (
-    <aside className="w-64 bg-white border-e border-warm-100 flex flex-col h-full">
-      <div className="p-6 border-b border-warm-100">
-        <h1 className="font-display text-2xl font-bold text-warm-950 tracking-tight">{t('appName')}</h1>
-        <p className="text-sm text-warm-500 mt-0.5">{t('appSubtitle')}</p>
+    <aside
+      className={cn(
+        'bg-white border-e border-warm-100 flex flex-col h-full w-64 shrink-0',
+        // Mobile: slide-out drawer
+        'fixed inset-y-0 left-0 z-50 transition-transform duration-300 lg:relative lg:translate-x-0 lg:z-auto',
+        open ? 'translate-x-0' : '-translate-x-full'
+      )}
+    >
+      <div className="p-6 border-b border-warm-100 flex items-center justify-between">
+        <div>
+          <h1 className="font-display text-2xl font-bold text-warm-950 tracking-tight">{t('appName')}</h1>
+          <p className="text-sm text-warm-500 mt-0.5">{t('appSubtitle')}</p>
+        </div>
+        {/* Close button on mobile */}
+        <button
+          onClick={onClose}
+          className="lg:hidden p-1 text-warm-400 hover:text-warm-600 transition-colors cursor-pointer"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
 
       <nav className="flex-1 p-4 space-y-1">
@@ -34,6 +57,7 @@ export function Sidebar() {
           <NavLink
             key={item.to}
             to={item.to}
+            onClick={onClose}
             className={({ isActive }) =>
               cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200',
@@ -55,6 +79,7 @@ export function Sidebar() {
             </div>
             <NavLink
               to="/admin"
+              onClick={onClose}
               className={({ isActive }) =>
                 cn(
                   'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200',

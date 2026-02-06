@@ -92,7 +92,7 @@ export function AdminPage() {
   return (
     <div className="max-w-5xl mx-auto animate-fade-in">
       <div className="mb-8">
-        <h1 className="font-display text-3xl font-bold text-warm-900">{t('adminPanel')}</h1>
+        <h1 className="font-display text-2xl sm:text-3xl font-bold text-warm-900">{t('adminPanel')}</h1>
         <p className="mt-1 text-warm-500">{t('matchStudentsWithTeachers')}</p>
       </div>
 
@@ -154,12 +154,12 @@ export function AdminPage() {
               <div
                 key={match.id}
                 className={cn(
-                  'flex items-center justify-between px-6 py-4 animate-slide-up',
+                  'flex flex-col sm:flex-row sm:items-center justify-between px-4 sm:px-6 py-3 sm:py-4 gap-2 sm:gap-4 animate-slide-up',
                   !match.is_active && 'opacity-50'
                 )}
                 style={{ animationDelay: `${i * 50}ms` }}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
                   <div>
                     <span className="text-sm font-medium text-warm-800">
                       {match.student?.display_name ?? 'Unknown'}
@@ -173,7 +173,7 @@ export function AdminPage() {
                     {match.is_active ? t('active') : t('inactive')}
                   </Badge>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 shrink-0">
                   <Button
                     variant="ghost"
                     size="sm"

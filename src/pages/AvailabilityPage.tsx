@@ -103,14 +103,14 @@ export function AvailabilityPage() {
 
   return (
     <div className="max-w-6xl mx-auto animate-fade-in">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="font-display text-3xl font-bold text-warm-900">{t('availabilityTitle')}</h1>
-          <p className="mt-1 text-warm-500">
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-warm-900">{t('availabilityTitle')}</h1>
+          <p className="mt-1 text-sm sm:text-base text-warm-500">
             {t('availabilityDescription')} <strong className="text-warm-700">{t('busy')}</strong>{t('availabilityDescriptionEnd')}
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           <Button variant="ghost" onClick={clearAll}>{t('clearAll')}</Button>
           <Button onClick={handleSave} loading={saving}>{t('saveChanges')}</Button>
         </div>

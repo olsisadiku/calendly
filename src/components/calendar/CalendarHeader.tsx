@@ -22,9 +22,9 @@ export function CalendarHeader({
   const { t } = useLanguage()
 
   return (
-    <div className="flex items-center justify-between mb-6">
-      <div className="flex items-center gap-4">
-        <h2 className="font-display text-2xl font-bold text-warm-900">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+      <div className="flex items-center gap-3 sm:gap-4">
+        <h2 className="font-display text-xl sm:text-2xl font-bold text-warm-900">
           {format(currentDate, view === 'month' ? 'MMMM yyyy' : "'Week of' MMM d, yyyy")}
         </h2>
         <div className="flex items-center gap-1">
@@ -43,7 +43,7 @@ export function CalendarHeader({
           </Button>
         </div>
       </div>
-      <div className="flex items-center bg-warm-100 rounded-lg p-0.5">
+      <div className="flex items-center bg-warm-100 rounded-lg p-0.5 self-start sm:self-auto">
         <button
           className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all cursor-pointer ${
             view === 'month' ? 'bg-white shadow-sm text-warm-900' : 'text-warm-500 hover:text-warm-700'

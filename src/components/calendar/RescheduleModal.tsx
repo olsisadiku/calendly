@@ -243,7 +243,7 @@ export function RescheduleModal({
             </Badge>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 bg-warm-50 rounded-lg p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 bg-warm-50 rounded-lg p-3 sm:p-4">
             <div>
               <p className="text-xs text-warm-400 uppercase tracking-wider">{t('date')}</p>
               <p className="text-sm font-medium text-warm-800 mt-0.5">
@@ -390,7 +390,7 @@ export function RescheduleModal({
             {displaySlots.length === 0 ? (
               <p className="text-sm text-warm-400">{t('noSlotsOnDate')}</p>
             ) : (
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                 {displaySlots.map((slot) => {
                   const isOriginalTime = slot.displayStart === lesson.startTime
                   const isSelected = selectedSlot === slot.teacherStart

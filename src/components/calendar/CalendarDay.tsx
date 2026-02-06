@@ -19,7 +19,7 @@ export function CalendarDay({ date, currentMonth, lessons, onLessonClick }: Cale
   return (
     <div
       className={cn(
-        'min-h-[120px] p-2 border-t border-warm-100 transition-colors',
+        'min-h-[90px] sm:min-h-[120px] p-1.5 sm:p-2 border-t border-warm-100 transition-colors',
         !inMonth && 'bg-warm-50/50',
         today && 'bg-primary-50/30'
       )}
