@@ -1,9 +1,7 @@
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { useProfile } from './hooks/useProfile'
-import { supabase } from './lib/supabase'
 import { ToastContainer } from './components/ui/Toast'
 import { Spinner } from './components/ui/Spinner'
 import { AppLayout } from './components/layout/AppLayout'
@@ -13,22 +11,6 @@ import { DashboardPage } from './pages/DashboardPage'
 import { AvailabilityPage } from './pages/AvailabilityPage'
 import { SchedulePage } from './pages/SchedulePage'
 import { AdminPage } from './pages/AdminPage'
-
-function AuthCallback() {
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    supabase.auth.getSession().then(() => {
-      navigate('/dashboard', { replace: true })
-    })
-  }, [navigate])
-
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <Spinner size="lg" />
-    </div>
-  )
-}
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { session, loading } = useAuth()
@@ -93,7 +75,6 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/auth/callback" element={<AuthCallback />} />
       <Route
         path="/role-selection"
         element={

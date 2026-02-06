@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import type { Session, User } from '@supabase/supabase-js'
 import { supabase } from '../lib/supabase'
+import { getGoogleIdToken } from '../lib/google-identity'
 import type { Profile } from '../lib/database.types'
 
 interface AuthContextType {
@@ -62,10 +63,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const signInWithGoogle = async () => {
-    await supabase.auth.signInWithOAuth({
+    const idToken = await getGoogleIdToken()
+    const { error } = await supabase.auth.signInWithIdToken({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/auth/callback` },
+      token: idToken,
     })
+    if (error) throw error
   }
 
   const signInWithEmail = async (email: string, password: string) => {

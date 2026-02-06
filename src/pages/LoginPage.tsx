@@ -1,11 +1,16 @@
+import { Navigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { useLanguage } from '../contexts/LanguageContext'
 import { GoogleSignInButton } from '../components/auth/GoogleSignInButton'
 import { LoginForm } from '../components/auth/LoginForm'
 
 export function LoginPage() {
-  const { signInWithGoogle, signInWithEmail, signUpWithEmail } = useAuth()
+  const { session, signInWithGoogle, signInWithEmail, signUpWithEmail } = useAuth()
   const { t } = useLanguage()
+
+  if (session) {
+    return <Navigate to="/dashboard" replace />
+  }
 
   return (
     <div className="min-h-screen bg-warm-50 flex">
